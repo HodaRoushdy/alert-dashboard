@@ -1,5 +1,11 @@
-import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+} from "@mui/material";
 import { AlertData } from "../../Data";
+import HeaderComp from "../Header";
 import "./index.css";
 
 const Alert = () => {
@@ -54,12 +60,14 @@ const Alert = () => {
               backgroundColor: "#53ACFF",
               borderRadius: "0.3rem",
             },
-          }}>
+          }}
+        >
           <div
             style={{
               display: "flex",
               width: "100%",
-            }}>
+            }}
+          >
             <div style={styles.onePiece}>
               <img src={firstImg} />
               <p>{firstCol}</p>
@@ -106,19 +114,16 @@ const Alert = () => {
     )
   );
 
-  // <div style={styles.forBG}>{renderInputData}</div>;
-  return <div style={styles.forBG}>{renderInputData}</div>;
-  // <div>
-  //   <Accordion>
-  //     <AccordionSummary aria-controls="panel1-content" id="panel1-header">
-  //       <div style={styles.forBG}>{renderInputData}</div>
-  //     </AccordionSummary>
-  //     <AccordionDetails>
-  //       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-  //       malesuada lacus ex, sit amet blandit leo lobortis eget.
-  //     </AccordionDetails>
-  //   </Accordion>
-  // </div>
+  return (
+    <Box
+      sx={{
+        backgroundColor: "#313131",
+      }}
+    >
+      <HeaderComp />
+      <div style={styles.forBG}>{renderInputData}</div>
+    </Box>
+  );
 };
 
 export default Alert;

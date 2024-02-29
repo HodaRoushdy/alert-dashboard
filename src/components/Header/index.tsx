@@ -1,18 +1,12 @@
-import {
-  Box,
-  IconButton,
-  Menu,
-  Toolbar,
-
-} from "@mui/material";
-import "./index.css";
-import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-import NotificationsIcon from "../../../public/notifications.svg";
+import { Box, IconButton, Menu } from "@mui/material";
+import React from "react";
 import SearchComp from "../SearchComp";
+import "./index.css";
+import NotificationsIcon from "/notifications.svg";
 
 interface IHeaderProps {
-  handleDrawerToggle: () => void;
+  handleDrawerToggle?: () => void;
 }
 
 const HeaderComp = ({ handleDrawerToggle }: IHeaderProps) => {
@@ -40,40 +34,57 @@ const HeaderComp = ({ handleDrawerToggle }: IHeaderProps) => {
         horizontal: "right",
       }}
       open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}></Menu>
+      onClose={handleMobileMenuClose}
+    ></Menu>
   );
 
   return (
-    <>
-      <Toolbar
-        style={{ display: "flex", gap: "0.5rem", backgroundColor: "#313131" }}>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: "1.25rem ",
+      }}
+    >
+      <>
         <IconButton
           color="inherit"
           aria-label="open drawer"
           edge="start"
           onClick={handleDrawerToggle}
-          sx={{ mr: 2, display: { sm: "none" } }}>
+          sx={{ mr: 2, display: { sm: "none" } }}
+        >
           <MenuIcon style={{ color: "#4f46e5" }} />
         </IconButton>
-
-        <Box sx={{ flexGrow: 1 }} />
-        <div>
+        <div
+          style={{
+            minWidth: "5px",
+            backgroundColor: "#53ACFF",
+            minHeight: "72px",
+            borderRadius: 50,
+          }}
+        ></div>
+        <div style={{ display: "flex" }}>
           <h1
             style={{
-              borderLeft: "5px solid #53ACFF",
+              fontSize: "48px",
               borderRadius: "0.2rem",
-              padding: "0 0.5rem",
-            }}>
+              textAlign: "left",
+              lineHeight: "72px",
+              color: "white",
+            }}
+            className="poppins-bold"
+          >
             ALERTS
           </h1>
         </div>
 
         <SearchComp placeholder="Search By..." />
         <img src={NotificationsIcon} />
-      </Toolbar>
+      </>
 
       {renderMobileMenu}
-    </>
+    </Box>
   );
 };
 

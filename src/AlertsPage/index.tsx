@@ -173,9 +173,23 @@ function Tag(props: TagProps) {
 
 const AlertPage = () => {
   const renderIndustry = IndustryItems.map(({ icon, title }, idx) => (
-    <div key={idx} style={{ display: "flex", gap: "0.4rem" }} className="item">
-      <img src={icon} />
-      <span style={{ color: "white" }}>{title}</span>
+    <div
+      key={idx}
+      className="col-span-1 flex"
+      style={{
+        padding: "0 0.5rem",
+        borderLeft: "1px solid white",
+      }}
+    >
+      <div className="item flex gap-2 w-fit px-2">
+        <img className="w-3" src={icon} />
+        <h6
+          style={{ color: "white", fontSize: "12px", lineHeight: "26px" }}
+          className="poppins-regular  w-fit"
+        >
+          {title}
+        </h6>
+      </div>
     </div>
   ));
 
@@ -198,23 +212,24 @@ const AlertPage = () => {
     getOptionLabel: (option) => option.title,
   });
   return (
-    <div className="grid grid-cols-4 bg-blue-200">
-      <div className="col-span-3 ">
+    <div className="grid xl:grid-cols-6 lg:grid-cols-5 ">
+      <div className="xl:col-span-4 lg:col-span-3 ">
         <Alert />
       </div>
-
       <div
+        className="xl:col-span-2 lg:col-span-2"
         style={{
           backgroundColor: "#181818",
           padding: "0 1rem",
         }}
-        className="col-span-1">
+      >
         <h1
           style={{
             display: "flex",
             justifyContent: "center",
             color: "white",
-          }}>
+          }}
+        >
           Filters
         </h1>
         <Root>
@@ -224,7 +239,8 @@ const AlertPage = () => {
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "0.5rem",
-              }}>
+              }}
+            >
               <Label {...getInputLabelProps()} style={{ color: "#979797" }}>
                 Filters Applied
               </Label>
@@ -234,10 +250,11 @@ const AlertPage = () => {
               <InputWrapper
                 style={{ width: "100%" }}
                 ref={setAnchorEl}
-                className={focused ? "focused" : ""}>
+                className={focused ? "focused" : ""}
+              >
                 {value.map((option: FilmOptionType, index: number) => (
                   <StyledTag
-                    style={{ backgroundColor: "#53ACFF" }}
+                    // style={{ backgroundColor: "#53ACFF" }}
                     label={option.title}
                     {...getTagProps({ index })}
                   />
@@ -262,15 +279,9 @@ const AlertPage = () => {
           <h3 style={{ color: "white" }}>stock</h3>
           <SearchComp placeholder="$ TICKER" />
         </div>
-        <div className="industry" style={{ paddingLeft: "1.2rem" }}>
+        <div className="industry">
           <h5 style={{ color: "white" }}>Industry</h5>
-          <div
-            style={{
-              padding: "0 0.5rem",
-              borderLeft: "1px solid white",
-            }}>
-            {renderIndustry}
-          </div>
+          <div className="grid grid-cols-2">{renderIndustry}</div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div style={{ color: "white" }}>
               <h5>Market Cap</h5>
@@ -278,7 +289,8 @@ const AlertPage = () => {
                 <RadioGroup
                   aria-labelledby="demo-radio-buttons-group-label"
                   defaultValue="large"
-                  name="radio-buttons-group">
+                  name="radio-buttons-group"
+                >
                   <FormControlLabel
                     value="micro"
                     control={<Radio />}
@@ -303,7 +315,8 @@ const AlertPage = () => {
                 <RadioGroup
                   aria-labelledby="demo-radio-buttons-group-label"
                   defaultValue="mid risk"
-                  name="radio-buttons-group">
+                  name="radio-buttons-group"
+                >
                   <FormControlLabel
                     value="low risk"
                     control={<Radio />}
@@ -331,7 +344,8 @@ const AlertPage = () => {
             style={{
               display: "flex",
               justifyContent: "center",
-            }}>
+            }}
+          >
             <Button style={{ backgroundColor: "#53ACFF" }} variant="contained">
               Apply
             </Button>

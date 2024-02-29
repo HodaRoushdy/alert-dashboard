@@ -1,5 +1,5 @@
-import { styled, alpha, InputBase } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { InputBase, alpha, styled } from "@mui/material";
 const Search = styled("div")(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.black, 0.7),
@@ -46,13 +46,21 @@ const SearchComp = ({ placeholder }: IProps) => {
           md: "block",
           lg: "block",
         },
-      }}>
+      }}
+    >
       <StyledInputBase
         placeholder={placeholder}
         inputProps={{ "aria-label": "search" }}
+        sx={{
+          color: "white",
+        }}
       />
       <SearchIconWrapper>
-        <SearchIcon />
+        <SearchIcon
+          sx={{
+            color: "white",
+          }}
+        />
       </SearchIconWrapper>
     </Search>
   );

@@ -1,32 +1,31 @@
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
-import AppBar from "@mui/material/AppBar";
-import { Outlet, useLocation } from "react-router-dom";
-import Box from "@mui/material/Box";
-import List from "@mui/material/List";
 import React from "react";
-// import LogoIcon from "../../../public/street suite logo-04.png";
-import AlertIcon from "../../../public/alert.svg";
-import AutomationIcon from "../../../public/automation.svg";
-import Portfolio from "../../../public/portfolio.svg";
-import Trading from "../../../public/trading.svg";
-import Training from "../../../public/training.svg";
-import HeaderComp from "../Header";
+import { Outlet, useLocation } from "react-router-dom";
+import AlertIcon from "/alert.svg";
+import AutomationIcon from "/automation.svg";
+import Portfolio from "/portfolio.svg";
+import LogoIcon from "/street suite logo-04.png";
+import Trading from "/trading.svg";
+import Training from "/training.svg";
 
-const drawerWidth = 72;
+const drawerWidth = 65;
 
 export default function ResponsiveDrawer() {
   const { pathname } = useLocation();
 
   const styles = {
     drawerWidth: {
-      width: 72,
+      width: drawerWidth,
       "&:hover": {
-        width: "220!important",
+        width: "220! important",
       },
     },
     iconSize: {
@@ -59,14 +58,14 @@ export default function ResponsiveDrawer() {
   };
   const drawer = (
     <div className="h-full" style={styles.drawerWidth}>
-      <Toolbar>
-        {/* <img src={LogoIcon} /> */}
-      </Toolbar>
+      <Toolbar></Toolbar>
+      <img src={LogoIcon} />
 
-      <List>
+      <List sx={{ alignItems: "center", justifyContent: "center" }}>
         <ListItemButton
           sx={styles.listItemButtonStyle}
-          selected={pathname == "/"}>
+          selected={pathname == "/"}
+        >
           <ListItemIcon>
             <img src={AlertIcon} />
           </ListItemIcon>
@@ -75,7 +74,8 @@ export default function ResponsiveDrawer() {
 
         <ListItemButton
           sx={styles.listItemButtonStyle}
-          selected={pathname == "/training"}>
+          selected={pathname == "/training"}
+        >
           <ListItemIcon>
             <img src={Training} />
           </ListItemIcon>
@@ -84,7 +84,8 @@ export default function ResponsiveDrawer() {
 
         <ListItemButton
           sx={styles.listItemButtonStyle}
-          selected={pathname == "automation"}>
+          selected={pathname == "automation"}
+        >
           <ListItemIcon>
             <img src={AutomationIcon} />
           </ListItemIcon>
@@ -93,7 +94,8 @@ export default function ResponsiveDrawer() {
 
         <ListItemButton
           sx={styles.listItemButtonStyle}
-          selected={pathname == "/portfolio"}>
+          selected={pathname == "/portfolio"}
+        >
           <ListItemIcon>
             <img src={Portfolio} />
           </ListItemIcon>
@@ -102,7 +104,8 @@ export default function ResponsiveDrawer() {
 
         <ListItemButton
           sx={styles.listItemButtonStyle}
-          selected={pathname == "/trading"}>
+          selected={pathname == "/trading"}
+        >
           <ListItemIcon>
             <img src={Trading} />
           </ListItemIcon>
@@ -121,17 +124,16 @@ export default function ResponsiveDrawer() {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          // height: "5rem",
-          // backgroundColor: "transparent!important",
-        }}>
+        }}
+      >
         {/* <AlertPage /> */}
-        <HeaderComp handleDrawerToggle={handleDrawerToggle} />
       </AppBar>
       <Box
         component="nav"
         style={styles.drawerWidth}
         sx={{ flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders">
+        aria-label="mailbox folders"
+      >
         <Drawer
           variant="temporary"
           open={mobileOpen}
@@ -153,7 +155,8 @@ export default function ResponsiveDrawer() {
               },
               ":hover": { backgroundColor: "white" },
             },
-          }}>
+          }}
+        >
           {drawer}
         </Drawer>
 
@@ -175,7 +178,8 @@ export default function ResponsiveDrawer() {
               },
             },
           }}
-          open>
+          open
+        >
           {drawer}
         </Drawer>
       </Box>
@@ -184,10 +188,9 @@ export default function ResponsiveDrawer() {
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-        }}>
-        <Toolbar />
+        }}
+      >
         <Outlet />
       </Box>
     </Box>
