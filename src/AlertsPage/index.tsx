@@ -1,22 +1,22 @@
-import "./index.css";
-import Alert from "../components/AlertList";
 import {
   AutocompleteGetTagProps,
   useAutocomplete,
 } from "@mui/base/useAutocomplete";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
-import { autocompleteClasses } from "@mui/material/Autocomplete";
-import { styled } from "@mui/material/styles";
-import SearchComp from "../components/SearchComp";
-import { IndustryItems } from "../Data";
 import {
+  Button,
   FormControl,
-  RadioGroup,
   FormControlLabel,
   Radio,
-  Button,
+  RadioGroup,
 } from "@mui/material";
+import { autocompleteClasses } from "@mui/material/Autocomplete";
+import { styled } from "@mui/material/styles";
+import { IndustryItems } from "../Data";
+import Alert from "../components/AlertList";
+import SearchComp from "../components/SearchComp";
+import "./index.css";
 interface FilmOptionType {
   title: string;
 }
@@ -198,17 +198,17 @@ const AlertPage = () => {
     getOptionLabel: (option) => option.title,
   });
   return (
-    <div style={{ display: "flex" }}>
-      <div style={{ width: "70%" }}>
+    <div className="grid grid-cols-4 bg-blue-200">
+      <div className="col-span-3 ">
         <Alert />
       </div>
 
       <div
         style={{
           backgroundColor: "#181818",
-          width: "30%",
           padding: "0 1rem",
-        }}>
+        }}
+        className="col-span-1">
         <h1
           style={{
             display: "flex",
