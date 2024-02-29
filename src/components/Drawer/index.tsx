@@ -1,6 +1,3 @@
-import AssignmentIcon from "@mui/icons-material/Assignment";
-import MovingIcon from "@mui/icons-material/Moving";
-import SchoolIcon from "@mui/icons-material/School";
 import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -11,11 +8,14 @@ import AppBar from "@mui/material/AppBar";
 import { Outlet, useLocation } from "react-router-dom";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import HeaderComp from "../Header";
 import React from "react";
-import Alert from "../OneAlert";
-
+// import LogoIcon from "../../../public/street suite logo-04.png";
+import AlertIcon from "../../../public/alert.svg";
+import AutomationIcon from "../../../public/automation.svg";
+import Portfolio from "../../../public/portfolio.svg";
+import Trading from "../../../public/trading.svg";
+import Training from "../../../public/training.svg";
+import HeaderComp from "../Header";
 
 const drawerWidth = 72;
 
@@ -57,18 +57,18 @@ export default function ResponsiveDrawer() {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
   const drawer = (
     <div className="h-full" style={styles.drawerWidth}>
       <Toolbar>
-        <img src="../../assets/street suite logo-04.png" />
+        {/* <img src={LogoIcon} /> */}
       </Toolbar>
+
       <List>
         <ListItemButton
           sx={styles.listItemButtonStyle}
           selected={pathname == "/"}>
           <ListItemIcon>
-            <NotificationsIcon style={styles.iconSize} />
+            <img src={AlertIcon} />
           </ListItemIcon>
           <ListItemText className="txt" primary="Alerts" />
         </ListItemButton>
@@ -77,7 +77,7 @@ export default function ResponsiveDrawer() {
           sx={styles.listItemButtonStyle}
           selected={pathname == "/training"}>
           <ListItemIcon>
-            <SchoolIcon style={styles.iconSize} />
+            <img src={Training} />
           </ListItemIcon>
           <ListItemText style={styles.iconSize} primary="Training" />
         </ListItemButton>
@@ -86,7 +86,7 @@ export default function ResponsiveDrawer() {
           sx={styles.listItemButtonStyle}
           selected={pathname == "automation"}>
           <ListItemIcon>
-            <AssignmentIcon style={styles.iconSize} />
+            <img src={AutomationIcon} />
           </ListItemIcon>
           <ListItemText style={styles.iconSize} primary="Automation" />
         </ListItemButton>
@@ -95,7 +95,7 @@ export default function ResponsiveDrawer() {
           sx={styles.listItemButtonStyle}
           selected={pathname == "/portfolio"}>
           <ListItemIcon>
-            <SchoolIcon style={styles.iconSize} />
+            <img src={Portfolio} />
           </ListItemIcon>
           <ListItemText style={styles.iconSize} primary="Portfolio" />
         </ListItemButton>
@@ -104,7 +104,7 @@ export default function ResponsiveDrawer() {
           sx={styles.listItemButtonStyle}
           selected={pathname == "/trading"}>
           <ListItemIcon>
-            <MovingIcon style={styles.iconSize} />
+            <img src={Trading} />
           </ListItemIcon>
           <ListItemText style={styles.iconSize} primary="Trading" />
         </ListItemButton>
@@ -121,11 +121,11 @@ export default function ResponsiveDrawer() {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          height: "5rem",
-          backgroundColor: "transparent!important",
+          // height: "5rem",
+          // backgroundColor: "transparent!important",
         }}>
-        <HeaderComp />
-        <Alert />
+        {/* <AlertPage /> */}
+        <HeaderComp handleDrawerToggle={handleDrawerToggle} />
       </AppBar>
       <Box
         component="nav"
@@ -143,7 +143,6 @@ export default function ResponsiveDrawer() {
             display: { xs: "block", sm: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
-              // width: drawerWidth,
             },
           }}
           style={styles.drawerWidth}

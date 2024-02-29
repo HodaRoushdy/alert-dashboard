@@ -1,89 +1,79 @@
-import { AppBar, Box, InputBase, alpha, styled } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import "./index.css";
+import {
+  Box,
+  IconButton,
+  Menu,
+  Toolbar,
 
-const HeaderComp = () => {
-  const Search = styled("div")(({ theme }) => ({
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(1),
-    },
-  }));
-  const SearchIconWrapper = styled("div")(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-  }));
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: "inherit",
-    width: "100%",
-    "& .MuiInputBase-input": {
-      padding: theme.spacing(1, 1, 1, 0),
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create("width"),
-      [theme.breakpoints.up("sm")]: {
-        width: "30ch",
-        "&:focus": {
-          width: "40ch",
-        },
-      },
-    },
-  }));
+} from "@mui/material";
+import "./index.css";
+import React from "react";
+import MenuIcon from "@mui/icons-material/Menu";
+import NotificationsIcon from "../../../public/notifications.svg";
+import SearchComp from "../SearchComp";
+
+interface IHeaderProps {
+  handleDrawerToggle: () => void;
+}
+
+const HeaderComp = ({ handleDrawerToggle }: IHeaderProps) => {
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null);
+  };
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
+    React.useState<null | HTMLElement>(null);
+
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const mobileMenuId = "primary-search-account-menu-mobile";
+
+  const renderMobileMenu = (
+    <Menu
+      anchorEl={mobileMoreAnchorEl}
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      id={mobileMenuId}
+      keepMounted
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      open={isMobileMenuOpen}
+      onClose={handleMobileMenuClose}></Menu>
+  );
 
   return (
-    <AppBar position="static">
-      <Box
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "0 2rem",
-          alignItems: "center",
-          gap: "1rem",
-        }}>
-        <h1
-          className="bg-red-900"
-          style={{ borderLeft: "5px #53ACFF solid ", padding: "0 0.5rem" }}>
-          ALERTS
-        </h1>
-        <Search
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            backgroundColor: "pink",
-          }}>
-          <StyledInputBase
+    <>
+      <Toolbar
+        style={{ display: "flex", gap: "0.5rem", backgroundColor: "#313131" }}>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="start"
+          onClick={handleDrawerToggle}
+          sx={{ mr: 2, display: { sm: "none" } }}>
+          <MenuIcon style={{ color: "#4f46e5" }} />
+        </IconButton>
+
+        <Box sx={{ flexGrow: 1 }} />
+        <div>
+          <h1
             style={{
-              backgroundColor: "#414040",
+              borderLeft: "5px solid #53ACFF",
               borderRadius: "0.2rem",
-            }}
-            className="placeColor"
-            placeholder="Search By…"
-            inputProps={{ "aria-label": "search" }}
-          />
-          <SearchIconWrapper>
-            <SearchIcon
-              style={{
-                backgroundColor: "GrayText",
-              }}
-            />
-          </SearchIconWrapper>
-        </Search>
-        <img
-          src="../../assets/notifications"
-          style={{ width: "5rem", backgroundColor: "red" }}
-        />
-      </Box>
-    </AppBar>
+              padding: "0 0.5rem",
+            }}>
+            ALERTS
+          </h1>
+        </div>
+
+        <SearchComp placeholder="Search By..." />
+        <img src={NotificationsIcon} />
+      </Toolbar>
+
+      {renderMobileMenu}
+    </>
   );
 };
 
