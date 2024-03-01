@@ -1,3 +1,18 @@
-.placeColor::placeholder{
-color: white;
+.placeColor::placeholder {
+  color: white;
+}
+
+.alerts {
+  position: relative;
+}
+
+.alerts::before {
+  content: "";
+  position: absolute;
+  left: -15px; /* Adjust the distance from the "Alerts" text */
+  top: 10px;
+  height: 52px;
+  width: 5px; /* Adjust the width of the vertical line */
+  border-radius: 6px;
+  background-color: #53acff; /* Change the color to your preference */
 }

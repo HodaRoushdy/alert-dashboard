@@ -8,9 +8,7 @@ const Search = styled("div")(({ theme }) => ({
   },
   marginLeft: 0,
   width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
-  },
+  [theme.breakpoints.up("sm")]: {},
 }));
 const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
@@ -30,14 +28,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 interface IProps {
   placeholder: string;
+  fontSize: string;
+  paddingBlock: number;
 }
-const SearchComp = ({ placeholder }: IProps) => {
+const SearchComp = ({ placeholder, fontSize, paddingBlock }: IProps) => {
   return (
     <Search
       style={{
         display: "flex",
         backgroundColor: "#414040",
-        borderRadius: "0.2rem",
+        borderRadius: "8px",
       }}
       sx={{
         display: {
@@ -53,6 +53,9 @@ const SearchComp = ({ placeholder }: IProps) => {
         inputProps={{ "aria-label": "search" }}
         sx={{
           color: "white",
+          lineHeight: 72,
+          fontSize: fontSize,
+          paddingBlock: paddingBlock,
         }}
       />
       <SearchIconWrapper>

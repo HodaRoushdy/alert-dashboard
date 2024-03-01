@@ -19,7 +19,7 @@ export const AlertData: IInput[] = [
     secondImg: "/paper.svg",
     colorThirdCol: "#D94111",
     thirdImg: "/wave.svg",
-    forthImg: "/dollar.svg",
+    forthImg: "/low.risk.money.svg",
     forthCol: "Low Risk",
   },
   {
@@ -28,7 +28,7 @@ export const AlertData: IInput[] = [
     secondImg: "/paper.svg",
     colorThirdCol: "#118F4B",
     thirdImg: "/wave.svg",
-    forthImg: "/dollar.svg",
+    forthImg: "/high.risk.money.svg",
     forthCol: "High Risk",
   },
   {
@@ -37,7 +37,7 @@ export const AlertData: IInput[] = [
     secondImg: "/paper.svg",
     colorThirdCol: "#118F4B",
     thirdImg: "/wave.svg",
-    forthImg: "/dollar.svg",
+    forthImg: "/high.risk.money.svg",
     forthCol: "High Risk",
   },
   {
@@ -46,7 +46,7 @@ export const AlertData: IInput[] = [
     secondImg: "/paper.svg",
     colorThirdCol: "#D94111",
     thirdImg: "/wave.svg",
-    forthImg: "/dollar.svg",
+    forthImg: "/low.risk.money.svg",
     forthCol: "Low Risk",
   },
   {
@@ -55,7 +55,7 @@ export const AlertData: IInput[] = [
     secondImg: "/paper.svg",
     colorThirdCol: "#118F4B",
     thirdImg: "/wave.svg",
-    forthImg: "/dollar.svg",
+    forthImg: "/low.risk.money.svg",
     forthCol: "Low Risk",
   },
   {
@@ -64,7 +64,7 @@ export const AlertData: IInput[] = [
     secondImg: "/paper.svg",
     colorThirdCol: "#D94111",
     thirdImg: "/wave.svg",
-    forthImg: "/dollar.svg",
+    forthImg: "/low.risk.money.svg",
     forthCol: "Low Risk",
   },
   {
@@ -73,7 +73,7 @@ export const AlertData: IInput[] = [
     secondImg: "/paper.svg",
     colorThirdCol: "#D94111",
     thirdImg: "/wave.svg",
-    forthImg: "/dollar.svg",
+    forthImg: "/low.risk.money.svg",
     forthCol: "Low Risk",
   },
   {
@@ -82,7 +82,7 @@ export const AlertData: IInput[] = [
     secondImg: "/paper.svg",
     colorThirdCol: "#D94111",
     thirdImg: "/wave.svg",
-    forthImg: "/dollar.svg",
+    forthImg: "/low.risk.money.svg",
     forthCol: "Low Risk",
   },
   {
@@ -91,7 +91,7 @@ export const AlertData: IInput[] = [
     secondImg: "/paper.svg",
     colorThirdCol: "#D94111",
     thirdImg: "/wave.svg",
-    forthImg: "/dollar.svg",
+    forthImg: "/low.risk.money.svg",
     forthCol: "Low Risk",
   },
   {
@@ -100,7 +100,7 @@ export const AlertData: IInput[] = [
     secondImg: "/paper.svg",
     colorThirdCol: "#D94111",
     thirdImg: "/wave.svg",
-    forthImg: "/dollar.svg",
+    forthImg: "/low.risk.money.svg",
     forthCol: "Low Risk",
   },
 ];
@@ -151,3 +151,12 @@ export const IndustryItems: IIndustry[] = [
     title: "Financial",
   },
 ];
+
+export const Strategy = [
+  "Big Option Buys",
+  "Merger Arbitrage",
+  "Short Reports",
+  "Long Reports",
+];
+
+export const Assets = ["Stocks", "Options", "Futures", "Options"];

@@ -11,9 +11,7 @@ import "./index.css";
 const Alert = () => {
   const styles = {
     AllRow: {
-      backgroundColor: "#414040",
       borderRadius: "0.6rem",
-      padding: "0.2rem 1rem",
       marginBottom: "0.7rem",
     },
     forBG: {
@@ -23,19 +21,21 @@ const Alert = () => {
     onePiece: {
       display: "flex",
       alignItems: "center",
+      justifyContent: "space-evenly",
       borderRight: "1px #545454 solid",
-      width: "25%",
-      justifyContent: "center",
-      gap: "2rem",
       color: "white",
+      overflow: "auto",
+      textOverflow: "ellipsis",
+      width: "100%",
     },
     lastPiece: {
       display: "flex",
       alignItems: "center",
-      width: "25%",
-      justifyContent: "center",
-      gap: "2rem",
+      justifyContent: "space-around",
       color: "white",
+      overflow: "auto",
+      textOverflow: "ellipsis",
+      width: "100%",
     },
   };
   const renderInputData = AlertData.map(
@@ -51,57 +51,76 @@ const Alert = () => {
       },
       idx
     ) => (
-      <Accordion key={idx} style={styles.AllRow}>
+      <Accordion
+        key={idx}
+        style={styles.AllRow}
+        sx={{
+          "&.Mui-expanded": {
+            backgroundColor: "black",
+            borderRadius: "8px",
+          },
+          borderRadius: "8px",
+          backgroundColor: "#414040",
+        }}
+      >
         <AccordionSummary
           aria-controls="panel1-content"
           id="panel1-header"
           sx={{
             "&.Mui-expanded": {
               backgroundColor: "#53ACFF",
-              borderRadius: "0.3rem",
+              borderRadius: "8px",
             },
+            borderRadius: "8px",
+            backgroundColor: "#414040",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              width: "100%",
-            }}
-          >
-            <div style={styles.onePiece}>
-              <img src={firstImg} />
-              <p>{firstCol}</p>
+          <div className="grid grid-cols-4 w-full">
+            <div style={styles.onePiece} className="col-span-1">
+              <div className="flex gap-6 px-2 items-center">
+                <img src={firstImg} />
+                <p style={{ textWrap: "nowrap" }}>{firstCol}</p>
+              </div>
             </div>
-            <div style={styles.onePiece}>
-              <img src={secondImg} />
-              <p>200</p>
+            <div style={styles.onePiece} className="col-span-1">
+              <div className="flex gap-6 px-2 items-center">
+                <img src={secondImg} />
+                <p style={{ textWrap: "nowrap" }}>200</p>
+              </div>
             </div>
-            <div style={styles.onePiece}>
-              <img src={thirdImg} />
-              <p style={{ color: `${colorThirdCol}` }}>-0.25 %</p>
+            <div style={styles.onePiece} className="col-span-1">
+              <div className="flex gap-6 px-2 items-center">
+                <img src={thirdImg} />
+                <p style={{ color: `${colorThirdCol}`, textWrap: "nowrap" }}>
+                  -0.25 %
+                </p>
+              </div>
             </div>
-            <div style={styles.lastPiece}>
-              <img src={forthImg} />
-              <p>{forthCol}</p>
+            <div style={styles.lastPiece} className="col-span-1">
+              <div className="flex gap-6 px-2 items-center">
+                <img src={forthImg} />
+                <p style={{ textWrap: "nowrap" }}>{forthCol}</p>
+              </div>
             </div>
           </div>
         </AccordionSummary>
-        <AccordionDetails className=" bg-black text-white rounded-md px-80 ">
-          <div className=" px-6">
+        <AccordionDetails className="text-white ">
+          <div className="px-6">
             <p className="leading-10 tracking-normal">
-              ${firstCol} just announced an acquisition of $NFLX at $200 B.
+              <span className="poppins-bold">${firstCol}</span> just announced
+              an acquisition of $NFLX at $200 B.
             </p>
             <span className="tracking-normal">
-              This is an
-              <a href="#" className="underline text-cyan-400">
+              This is an &nbsp;
+              <a href="#" className="underline text-blue-400">
                 arbitrage opportunity
               </a>
               , with the max gain being %X if the deal closes, but the possible
               risk <br />
               <span>
                 is %Y if the deal fails, If the deal success s % and therefore
-                the recommended play is
-                <a href="#" className="underline text-cyan-400">
+                the recommended play is &nbsp;
+                <a href="#" className="underline text-blue-400">
                   long/short
                 </a>
                 <br />
@@ -120,8 +139,10 @@ const Alert = () => {
         backgroundColor: "#313131",
       }}
     >
-      <HeaderComp />
-      <div style={styles.forBG}>{renderInputData}</div>
+      <div style={styles.forBG}>
+        <HeaderComp />
+        {renderInputData}
+      </div>
     </Box>
   );
 };

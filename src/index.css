@@ -8,6 +8,20 @@
   font-weight: 400;
   font-style: normal;
 }
+body * {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.css-o4b71y-MuiAccordionSummary-content.Mui-expanded {
+  margin: 16px 0 !important;
+}
+
+.poppins-lightbold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
 
 .poppins-semibold {
   font-family: "Poppins", sans-serif;

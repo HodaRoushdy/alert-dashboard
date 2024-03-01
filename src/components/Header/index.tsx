@@ -1,15 +1,14 @@
-import MenuIcon from "@mui/icons-material/Menu";
-import { Box, IconButton, Menu } from "@mui/material";
+import { Box, Menu } from "@mui/material";
 import React from "react";
 import SearchComp from "../SearchComp";
 import "./index.css";
 import NotificationsIcon from "/notifications.svg";
 
-interface IHeaderProps {
-  handleDrawerToggle?: () => void;
-}
+// interface IHeaderProps {
+//   handleDrawerToggle?: () => void;
+// }
 
-const HeaderComp = ({ handleDrawerToggle }: IHeaderProps) => {
+const HeaderComp = () => {
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
@@ -44,10 +43,11 @@ const HeaderComp = ({ handleDrawerToggle }: IHeaderProps) => {
         display: "flex",
         alignItems: "center",
         gap: "1.25rem ",
+        paddingBlock: 2,
       }}
     >
       <>
-        <IconButton
+        {/* <IconButton
           color="inherit"
           aria-label="open drawer"
           edge="start"
@@ -55,15 +55,15 @@ const HeaderComp = ({ handleDrawerToggle }: IHeaderProps) => {
           sx={{ mr: 2, display: { sm: "none" } }}
         >
           <MenuIcon style={{ color: "#4f46e5" }} />
-        </IconButton>
-        <div
+        </IconButton> */}
+        {/* <div
           style={{
             minWidth: "5px",
             backgroundColor: "#53ACFF",
             minHeight: "72px",
             borderRadius: 50,
           }}
-        ></div>
+        ></div> */}
         <div style={{ display: "flex" }}>
           <h1
             style={{
@@ -73,13 +73,24 @@ const HeaderComp = ({ handleDrawerToggle }: IHeaderProps) => {
               lineHeight: "72px",
               color: "white",
             }}
-            className="poppins-bold"
+            className="poppins-bold alerts"
           >
             ALERTS
           </h1>
         </div>
 
-        <SearchComp placeholder="Search By..." />
+        <Box
+          sx={{
+            display: { xs: "none", sm: "block", md: "block", lg: "block" },
+            flex: 1,
+          }}
+        >
+          <SearchComp
+            paddingBlock={0.5}
+            fontSize="15px"
+            placeholder="Search By..."
+          />
+        </Box>
         <img src={NotificationsIcon} />
       </>
 
